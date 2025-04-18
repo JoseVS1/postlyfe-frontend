@@ -58,22 +58,28 @@ export const LoginPage = () => {
     ));
   }
   return (
-    <>
-      <h1>Log in</h1>
+    <div className="login-page">
+      <div className="login-card">
+        <h1>Log in</h1>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input type="text" value={formData.username} onChange={handleInputChange} name="username" id="username" required />
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="username">Username: </label>
+            <input type="text" value={formData.username} onChange={handleInputChange} name="username" id="username" required />
+          </div>
+          
+          <div>
+            <label htmlFor="password">Password: </label>
+            <input type="password" value={formData.password} onChange={handleInputChange} name="password" id="password" required />
+        
+            {errors.length > 0 && <Errors errors={errors} />}
+          </div>
+        
+          <button type="submit">Log in</button>
+        </form>
 
-        <label htmlFor="password">Password: </label>
-        <input type="password" value={formData.password} onChange={handleInputChange} name="password" id="password" required />
-
-        <button type="submit">Log in</button>
-      </form>
-
-      {errors.length > 0 && <Errors errors={errors} />}
-
-      <h2>You don't have an account? <Link to="/signup">Create one</Link>.</h2>
-    </>
+        <span>Don't have an account? <Link to="/signup">Create one</Link>.</span>
+      </div>
+    </div>
   )
 }
