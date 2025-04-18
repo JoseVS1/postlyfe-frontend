@@ -33,7 +33,7 @@ export const Navbar = () => {
             </li>
 
             {user ? (
-              <>
+              <div>
                 <li>
                   <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
                 </li>
@@ -41,18 +41,18 @@ export const Navbar = () => {
                   <NavLink to="/users">All users</NavLink>
                 </li>
                 <li>
-                  <button onClick={handleLogout}>Log out</button>
+                  <span onClick={handleLogout}>Log out</span>
                 </li>
-              </>
+              </div>
             ) : (
-              <>
+              <div>
                 <li>
                   <NavLink to="/signup">Sign up</NavLink>
                 </li>
                 <li>
                   <NavLink to="/login">Log in</NavLink>
                 </li>
-              </>
+              </div>
             )}
         </ul>
     </nav>
