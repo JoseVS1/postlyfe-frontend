@@ -119,28 +119,35 @@ export const Post = ({ postInfo, setPosts, isEditing }) => {
         };
     };
   return (
-    <>
+    <div className="post">
         {postUser && !isEditing && (
             <div>
                 <Link to={`/users/${postUser.id}`}>
-                    <img src={`${postUser.profile.profilePictureUrl ? postUser.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${postUser.username}'s profile picture`} />
-                    <h2>{postUser.username}</h2>
-                </Link>
-
-                {followStatus && followStatus.status === "accepted" && <h3> • Friend</h3> }
-    
-                <h3>{postInfo.updatedAt ? `Updated at: ${[postInfo.updatedAt]}` : `Created at: ${postInfo.createdAt}`}</h3>
-
-                <Link to={`/posts/${postInfo.id}`}>
+                    <img className="profile-picture" src={`${postUser.profile.profilePictureUrl ? postUser.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${postUser.username}'s profile picture`} />
+                    
                     <div>
+                        <div className="username-status-container">
+                            <h2 className="username">{postUser.username}</h2>
+                            {followStatus && followStatus.status === "accepted" && <h3> • Friend</h3> }
+                        </div>
+                    
+                        <h3 className="timestamp">{postInfo.updatedAt !== postInfo.createdAt ? `Updated at: ${[postInfo.updatedAt]}` : `Created at: ${postInfo.createdAt}`}</h3>
+                    </div>
+                </Link>                        
+                
+                
+                <Link to={`/posts/${postInfo.id}`}>
+                    <div className="content-container">
                         <p>{postInfo.content}</p>
                     </div>
                 </Link>
 
-                <h2><button onClick={handleLike}>{liked ? "Unlike" : "Like"}</button> {postInfo.likeCount}</h2>
-                <h2>Comments: {postInfo.commentCount}</h2>
+                <div>
+                    <h2><span className="like" onClick={handleLike}>{liked ? <i className="liked fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}</span> <span>{postInfo.likeCount}</span></h2>
+                    <h2><Link to={`/posts/${postInfo.id}#comments`}><i className="comment-icon fa-regular fa-comment"></i> <span>{postInfo.commentCount}</span></Link></h2>
+                </div>
             </div>
         )}
-    </>
+    </div>
   )
 }

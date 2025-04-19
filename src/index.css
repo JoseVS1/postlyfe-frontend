@@ -97,7 +97,7 @@ nav ul div {
     gap: 2rem;
 }
 
-/* LOGIN PAGE */
+/* LOGIN AND SIGNUP PAGE */
 
 .login-page, .signup-page {
     height: 94.5vh;
@@ -182,6 +182,162 @@ nav ul div {
     color: #72b7a0;
 }
 
+/* HOME PAGE */
+
+.home-page {
+    height: 94.5vh;
+    padding: 5rem max(1rem, 25%);
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.home-page h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #1F2937;
+}
+
+.create-post-form {
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+}
+
+.create-post-form textarea {
+    flex: 1;
+    font-size: 1.5rem;
+    resize: none;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem;
+    padding: 2rem 0.75rem;
+    color: #1F2937;
+}
+
+.create-post-form button {
+    background-color: #10B981;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.create-post-form button:hover {
+    background-color: #059669;
+}
+
+.home-page > div {
+    width: 100%;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.post {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.post > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.post > div a:first-of-type {
+    display: flex;
+    width: fit-content;
+    gap: 1rem;
+}
+
+.post > div a:first-of-type > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.username-status-container {
+    display: flex;
+}
+
+.post .profile-picture {
+    height: 5rem;
+    border-radius: 50%;
+}
+
+.post .username {
+    color: #1F2937;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.post .timestamp {
+    color: #6b7280;
+    font-size: 1.5rem;
+}
+
+.content-container {
+    padding: 2rem 1rem;
+}
+
+.content-container:hover {
+    background-color: rgb(241, 241, 241);
+    border-radius: 0.5rem;
+}
+
+.post p {
+    color: #1F2937;
+    font-size: 2rem;
+}
+
+.post > div > div:last-of-type {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.post > div > div:last-of-type h2:first-of-type {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.post > div > div:last-of-type h2:first-of-type:hover span {
+    color: red;
+}
+
+.post > div > div:last-of-type h2:last-of-type a {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.post > div > div:last-of-type h2:last-of-type a:hover span, .post > div > div:last-of-type h2:last-of-type a:hover .comment-icon {
+    color: #10B981;
+}
+
+.like {
+    cursor: pointer;
+}
+
+.liked {
+    color: red;
+}
+
 /* PHONE */
 @media (max-width: 680px) {
     /* LOGIN PAGE */
@@ -196,9 +352,19 @@ nav ul div {
     .login-form, .signup-form {
         width: 80%;
     }
+
+    /* HOME PAGE */
+
+    .home-page {
+        padding: 5rem 3rem;
+    }
 }
 
 /* TABLET */
 @media (min-width: 681px) and (max-width: 1260px) {
+    /* HOME PAGE */
 
+    .home-page {
+        padding: 5rem max(1rem, 15%);
+    } 
 }

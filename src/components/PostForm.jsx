@@ -35,7 +35,7 @@ export const PostForm = ({ setPosts }) => {
         };
     };
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="create-post-form" onSubmit={handleSubmit}>
         <textarea onChange={e => setFormData({ content: e.target.value })} value={formData.content} name="content" id="content" required></textarea>
         <button type="submit">Post</button>
     </form>

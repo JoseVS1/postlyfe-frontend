@@ -28,7 +28,7 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="home-page">
       {errors.length > 0 && <Errors errors={errors} />}
 
       <h1>Postlyfe</h1>
@@ -37,7 +37,7 @@ export const HomePage = () => {
 
       {posts ? (
         <div>
-          <ul>
+          <ul className="post-list">
             {posts.map(post => ( 
                 <Post key={post.id} postInfo={post} setPosts={setPosts} />
             ))}
