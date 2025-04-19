@@ -62,28 +62,38 @@ export const SignupPage = () => {
     ));
   }
   return (
-    <>
-      <h1>Sign up</h1>
+    <div className="signup-page">
+      <div className="signup-card">
+        <h1>Sign up</h1>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input type="text" value={formData.username} onChange={handleInputChange} name="username" id="username" required />
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="username">Username: </label>
+            <input type="text" value={formData.username} onChange={handleInputChange} name="username" id="username" required />
+          </div>
+          
+          <div>
+            <label htmlFor="email">Email: </label>
+            <input type="email" value={formData.email} onChange={handleInputChange} name="email" id="email" required />
+          </div>
+          
+          <div>
+            <label htmlFor="password">Password: </label>
+            <input type="password" value={formData.password} onChange={handleInputChange} name="password" id="password" required />
+          </div>
+          
+          <div>
+            <label htmlFor="confirmPassword">Confirm password: </label>
+            <input type="password" value={formData.confirmPassword} onChange={handleInputChange} name="confirmPassword" id="confirmPassword" required />
+          
+            {errors.length > 0 && <Errors errors={errors} />}
+          </div>
+          
+          <button type="submit">Sign up</button>
+        </form>
 
-        <label htmlFor="email">Email: </label>
-        <input type="email" value={formData.email} onChange={handleInputChange} name="email" id="email" required />
-
-        <label htmlFor="password">Password: </label>
-        <input type="password" value={formData.password} onChange={handleInputChange} name="password" id="password" required />
-
-        <label htmlFor="confirmPassword">Confirm password: </label>
-        <input type="password" value={formData.confirmPassword} onChange={handleInputChange} name="confirmPassword" id="confirmPassword" required />
-
-        <button type="submit">Sign up</button>
-      </form>
-
-      {errors.length > 0 && <Errors errors={errors} />}
-
-      <h2>Already have an account? <Link to="/login">Log in</Link>.</h2>
-    </>
+        <span>Already have an account? <Link to="/login">Log in</Link>.</span>
+      </div>
+    </div>
   )
 }
