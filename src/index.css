@@ -183,6 +183,9 @@ nav ul div {
 /* PHONE */
 @media (max-width: 680px) {
     /* LOGIN PAGE */
+    .login-page {
+        padding: 5rem 3rem;
+    }
 
     .login-card {
         padding: 5rem 1rem;
