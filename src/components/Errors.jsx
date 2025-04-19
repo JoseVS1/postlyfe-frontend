@@ -3,7 +3,7 @@ export const Errors = ({errors}) => {
       <div>
           <ul>
               {errors.map((error, i) => (
-                  <li key={i}>{error}</li>
+                  <li className="error" key={i}>{error}</li>
               ))}
           </ul>
       </div>
