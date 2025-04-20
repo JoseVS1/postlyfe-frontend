@@ -122,7 +122,7 @@ export const Post = ({ postInfo, setPosts, isEditing }) => {
     <div className="post">
         {postUser && !isEditing && (
             <div>
-                <Link to={`/users/${postUser.id}`}>
+                <Link className="user-link" to={`/users/${postUser.id}`}>
                     <img className="profile-picture" src={`${postUser.profile.profilePictureUrl ? postUser.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${postUser.username}'s profile picture`} />
                     
                     <div>

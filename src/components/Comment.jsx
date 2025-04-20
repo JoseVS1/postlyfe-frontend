@@ -156,12 +156,12 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
         {commentUser && (
             <div>
                 <div className="comment">
-                    <Link to={`/users/${commentUser.id}`}>
+                    <Link className="user-link" to={`/users/${commentUser.id}`}>
                         <img className="profile-picture" src={`${commentUser.profile.profilePictureUrl ? commentUser.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${commentUser.username}'s profile picture`} />
                         
                         <div>
                             <div className="username-status-container">
-                                <h2>{commentUser.username}</h2>
+                                <h2 className="username" >{commentUser.username}</h2>
                                 {commentUser.id === postAuthorId && <h3 className="author"> • Author</h3>}
                             </div>
 

@@ -255,6 +255,10 @@ nav ul div {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
+.user-link:hover .username {
+    color: #696b6d;
+}
+
 .post > div {
     display: flex;
     flex-direction: column;
