@@ -85,7 +85,7 @@ export const PostPage = () => {
         }
     };
   return (
-    <>
+    <div className="post-page">
         {errors.length > 0 && <Errors errors={errors} />}
 
         {isEditing && (
@@ -93,21 +93,27 @@ export const PostPage = () => {
         )}
 
         {post && post.userId === user.id && !isEditing && (
-            <>
-                <button onClick={handleUpdatePost}>Edit</button>
-                <button onClick={handleDeletePost}>Delete</button>
-            </>
+            <div className="post-actions">
+                <button className="edit-post-button" onClick={handleUpdatePost}>Edit</button>
+                <button className="delete-post-button" onClick={handleDeletePost}>Delete</button>
+            </div>
         )}
 
         {post && !isEditing && (
             <div>
                 <Post postInfo={post} setPosts={setPosts} isEditing={isEditing} />
 
+                <h2 id="comments">Comments</h2>
+                
                 <CommentForm postId={post.id} setComments={setComments} setPost={setPost} />
 
-                {comments && comments.length > 0 ? <Comments comments={comments} postAuthorId={post.userId} setComments={setComments} postId={post.id} setPost={setPost} /> : <h2>There are no comments.</h2> }
+                {comments && comments.length > 0 ? <Comments comments={comments} postAuthorId={post.userId} setComments={setComments} postId={post.id} setPost={setPost} /> : (
+                    <div className="empty-comment-container">
+                        <h2>There are no comments.</h2>
+                    </div>
+                ) }
             </div>
         )}
-    </>
+    </div>
   )
 }

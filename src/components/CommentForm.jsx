@@ -44,7 +44,7 @@ export const CommentForm = ({ postId, setComments, setPost }) => {
         });
     };
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="create-comment-form" onSubmit={handleSubmit}>
         <textarea onChange={handleInputChange} value={formData.text} name="text" id="text" required>{formData.text}</textarea>
         <button type="submit">Submit</button>
     </form>

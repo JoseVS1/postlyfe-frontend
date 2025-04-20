@@ -44,8 +44,6 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
 
                 if (response.ok) {
                     setReplies(data.replies);
-                } else {
-                    setErrors([data.message]);
                 }
             } catch (err) {
                 setErrors(["Internal server error."]);
@@ -53,7 +51,7 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
         };
 
         getReplies();
-    }, []);
+    }, [replies]);
 
     const handleEditSubmit = async e => {
         e.preventDefault();
@@ -77,7 +75,7 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
                 setIsEditing(false);
             } else {
                 setErrors([data.message]);
-            };
+            }
         } catch (err) {
             setErrors(["Internal server error."]);
         }
@@ -100,7 +98,7 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
                 setComments(prevComments => prevComments.filter(c => c.id !== comment.id));
             } else {
                 setErrors([data.message]);
-            };
+            }
         } catch (err) {
             setErrors(["Internal server error."]);
         }
@@ -130,13 +128,15 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
             const data = await response.json();
 
             if (response.ok) {
-                setPost(data.post);
                 setIsReplying(false);
                 setReplyFormData({ text: "" });
+                if (setPost) {
+                    setPost(data.post);
+                }
                 setReplies(prevReplies => [...prevReplies, data.comment]);
             } else {
                 setErrors([data.message]);
-            };
+            }
         } catch (err) {
             setErrors(["Internal server error."]);
         };
@@ -155,51 +155,63 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
     <>
         {commentUser && (
             <div>
-                <div>
+                <div className="comment">
                     <Link to={`/users/${commentUser.id}`}>
-                        <img src={`${commentUser.profile.profilePictureUrl ? commentUser.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${commentUser.username}'s profile picture`} />
-                        <h2>{commentUser.username}</h2>
+                        <img className="profile-picture" src={`${commentUser.profile.profilePictureUrl ? commentUser.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${commentUser.username}'s profile picture`} />
+                        
+                        <div>
+                            <div className="username-status-container">
+                                <h2>{commentUser.username}</h2>
+                                {commentUser.id === postAuthorId && <h3 className="author"> • Author</h3>}
+                            </div>
+
+                            <h3 className="timestamp">{comment.createdAt}</h3>
+                        </div>
                     </Link>
 
-                    {commentUser.id === postAuthorId && <h3> • Author</h3>}
-
-                    <h3>{comment.createdAt}</h3>
-
                     {isEditing ? (
-                        <>
-                            <form onSubmit={handleEditSubmit}>
-                                <textarea onChange={e => setEditFormData({ text: e.target.value})} value={editFormData.text} name="text" id="text" required></textarea>
-                                <button type="submit">Edit</button>
-                            </form>
-
-                            <button onClick={handleCancelEdit}>Cancel</button>
-                        </>
+                        <form className="edit-comment-form" onSubmit={handleEditSubmit}>
+                            <textarea onChange={e => setEditFormData({ text: e.target.value})} value={editFormData.text} name="text" id="text" required></textarea>
+                            
+                            <div>
+                                <button className="cancel-button" onClick={handleCancelEdit}>Cancel</button>
+                                <button className="edit-comment-button" type="submit">Edit</button>
+                            </div>
+                        </form>
                     ) : (
-                        <p>{comment.parentCommentId && <span>Replying to {commentUser.username}: </span>} {comment.text}</p>
+                        <p>{comment.parentCommentId && <span className="reply">Replying to {commentUser.username}: </span>} {comment.text}</p>
                     )}
 
-                    {user.id === commentUser.id && !isEditing && (
-                        <div>
-                            <button onClick={handleUpdateComment}>Update</button>
-                            <button onClick={handleDeleteComment}>Delete</button>
-                        </div>
-                    )}
+                    <div className="comment-actions">
+                        {user.id === commentUser.id && !isEditing && (
+                            <>
+                                <button className="edit-comment-button" onClick={handleUpdateComment}>Update</button>
+                                <button className="delete-comment-button" onClick={handleDeleteComment}>Delete</button>
+                            </>
+                        )}
 
-                    <button onClick={handleReply}>Reply</button>
+                        <button className="reply-button" onClick={handleReply}>Reply</button>
+                    </div>
                 </div>
                 
                 {isReplying && (
-                    <>
-                        <form onSubmit={handleReplySubmit}>
+                    <div className="reply-form-container">
+                        <form className="create-reply-form" onSubmit={handleReplySubmit}>
                             <textarea onChange={e => setReplyFormData({ text: e.target.value})} value={replyFormData.text} name="text" id="text" required></textarea>
-                            <button type="submit">Submit</button>
+                            
+                            <div>
+                                <button className="cancel-button" onClick={handleCancelReply}>Cancel</button>
+                                <button className="submit-button" type="submit">Submit</button>
+                            </div>
                         </form>
-
-                        <button onClick={handleCancelReply}>Cancel</button>
-                    </>
+                    </div>
                 )}
 
-                {replies && replies.length > 0 && <Comments comments={replies} postAuthorId={postAuthorId} setComments={setComments} postId={postId} setPost={setPost} />}
+                {replies && (
+                    <div className="replies-section">
+                        <Comments comments={replies} postAuthorId={postAuthorId} setComments={setComments} postId={postId} setPost={setPost} />
+                    </div>
+                )}
             </div>
         )}
     </>

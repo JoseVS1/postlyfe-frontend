@@ -36,15 +36,21 @@ export const EditPostForm = ({ postInfo, setPosts, setIsEditing }) => {
         };
     };
 
+    const handleCancelUpdate = () => {
+        setFormData(formData);
+        setIsEditing(false);
+    };
+
   return (
-    <>
+    <form className="edit-post-form" onSubmit={handleSubmit}>
+        <textarea onChange={e => setFormData({ content: e.target.value })} value={formData.content} name="content" id="content"></textarea>
+        
         {errors.length > 0 && <Errors errors={errors} />}
 
-        <form onSubmit={handleSubmit}>
-            <textarea onChange={e => setFormData({ content: e.target.value })} value={formData.content} name="content" id="content"></textarea>
-            <button type="submit">Edit</button>
-        </form>
-    </>
-
+        <div>
+            <button className="cancel-button" onClick={handleCancelUpdate}>Cancel</button>
+            <button className="edit-post-button" type="submit">Edit</button>
+        </div>
+    </form>
   )
 }
