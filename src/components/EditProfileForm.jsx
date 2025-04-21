@@ -56,34 +56,53 @@ export const EditProfileForm = ({ setIsEditing }) => {
         ));
     };
 
+    const handleCancelUpdate = () => {
+        setFormData(formData);
+        setIsEditing(false);
+    };
+
   return (
-    <>
-        {errors.length > 0 && <Errors errors={errors} />}
-
-        <h1>{user.username}</h1>
-
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="profilePictureUrl">Profile Picture URL: </label>
-            <img src={`${user.profile?.profilePictureUrl ? user.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${user.username}'s profile picture`} />
-            <input type="text" onChange={handleInputChange} value={formData.profilePictureUrl} name="profilePictureUrl" id="profilePictureUrl" />
-
-            <label htmlFor="gender">Gender: </label>
-            <input type="text" onChange={handleInputChange} value={formData.gender} name="gender" id="gender" />
+    <div className="edit-profile-container">
+        <form className="edit-profile-form" onSubmit={handleSubmit}>
+            <div>
+                <label htmlFor="profilePictureUrl">Profile Picture URL: </label>
+                <img className="profile-picture" src={`${user.profile?.profilePictureUrl ? user.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${user.username}'s profile picture`} />
+                <input type="text" onChange={handleInputChange} value={formData.profilePictureUrl} name="profilePictureUrl" id="profilePictureUrl" />
+            </div>
             
-            <label htmlFor="bio">Bio: </label>
-            <textarea onChange={handleInputChange} value={formData.bio} name="bio" id="bio"></textarea>
+            <div>
+                <label htmlFor="gender">Gender: </label>
+                <input type="text" onChange={handleInputChange} value={formData.gender} name="gender" id="gender" />
+            </div>
+            
+            <div>
+                <label htmlFor="bio">Bio: </label>
+                <textarea onChange={handleInputChange} value={formData.bio} name="bio" id="bio"></textarea>
+            </div>
+            
+            <div>
+                <label htmlFor="firstName">First name:</label>
+                <input type="text" onChange={handleInputChange} value={formData.firstName} name="firstName" id="firstName" />
+            </div>
+            
+            <div>
+                <label htmlFor="lastName">Last name: </label>
+                <input type="text" onChange={handleInputChange} value={formData.lastName} name="lastName" id="lastName" />
+            </div>
+            
+            <div>
+                <label htmlFor="birthDate">Birthdate: </label>
+                <input type="date" onChange={handleInputChange} value={formData.birthDate} name="birthDate" id="birthDate" />
 
-            <label htmlFor="firstName">First name:</label>
-            <input type="text" onChange={handleInputChange} value={formData.firstName} name="firstName" id="firstName" />
+                {errors.length > 0 && <Errors errors={errors} />}
+            </div>
 
-            <label htmlFor="lastName">Last name: </label>
-            <input type="text" onChange={handleInputChange} value={formData.lastName} name="lastName" id="lastName" />
-
-            <label htmlFor="birthDate">Birthdate: </label>
-            <input type="date" onChange={handleInputChange} value={formData.birthDate} name="birthDate" id="birthDate" />
-
-            <button type="submit">Edit</button>
+            <div className="edit-profile-actions">
+                <button className="cancel-button" onClick={handleCancelUpdate}>Cancel</button>
+                <button className="edit-profile-button" type="submit">Edit</button>
+            </div>
+            
         </form>
-    </>
+    </div>
   )
 }

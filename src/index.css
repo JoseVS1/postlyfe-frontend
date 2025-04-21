@@ -654,7 +654,7 @@ button.reply-button:hover {
 
 .profile-page {
     min-height: 94.5vh;
-    padding: 5rem max(1rem, 25%);
+    padding: 5rem max(1rem, 22%);
     background-color: #f9fafb;
     display: flex;
     flex-direction: column;
@@ -692,7 +692,7 @@ button.reply-button:hover {
     border-radius: 50%;
 }
 
-.user-card button {
+.user-card button, .edit-profile-actions button {
     font-size: 1.5rem;
     padding: 0.8rem 1.5rem;
     border: 1px solid #D1D5DB;
@@ -706,7 +706,7 @@ button.reply-button:hover {
     color: white;
 }
 
-.user-card .follow-button:hover, .user-card .accept-button:hover, .user-card .edit-profile-button:hover {
+.user-card .follow-button:hover, .user-card .accept-button:hover, .user-card .edit-profile-button:hover, .edit-profile-actions .edit-profile-button:hover {
     background-color: #60c3a0;
     color: white;
 }
@@ -786,6 +786,66 @@ button.reply-button:hover {
     font-weight: normal;
 }
 
+/* EDIT PROFILE */
+
+.edit-profile-container {
+    min-height: 94.5vh;
+    padding: 5rem max(1rem, 25%);
+    padding: 5rem min(10rem, 1%);
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.edit-profile-form {
+    background-color: white;
+    padding: 3rem 5rem;
+    border-radius: 0.75rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.edit-profile-container .profile-picture {
+    height: 10rem;
+    border-radius: 50%;
+}
+
+.edit-profile-form div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.edit-profile-form label {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1F2937;
+}
+
+.edit-profile-form input, .edit-profile-form textarea {
+    background-color: #f9fafb;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    color: #1F2937;
+    padding: 1rem;
+    width: 100%;
+}
+
+.edit-profile-form textarea {
+    height: 15rem;
+}
+
+.edit-profile-form .edit-profile-actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+
 /* PHONE */
 @media (max-width: 680px) {
     /* LOGIN PAGE */
@@ -826,6 +886,16 @@ button.reply-button:hover {
     .profile {
         padding: 3rem 3rem;
     }
+
+    /* EDIT PROFILE */
+
+    .edit-profile-container {
+        padding: 5rem 0;
+    }
+
+    .edit-profile-form {
+        padding: 3rem 2rem;
+    }
 }
 
 /* TABLET */
@@ -845,6 +915,12 @@ button.reply-button:hover {
     /* PROFILE PAGE */
 
     .profile-page {
-        padding: 5rem max(1rem, 15%);
+        padding: 5rem max(1rem, 10%);
+    }
+
+    /* EDIT PROFILE */
+
+    .edit-profile-container {
+        padding: 5rem 2rem;
     }
 }
