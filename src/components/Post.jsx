@@ -49,7 +49,7 @@ export const Post = ({ postInfo, setPosts, isEditing }) => {
         if (postUser) {
             getFollowStatus();
         }
-    }, [postUser]);
+    }, [postUser, followStatus]);
 
     useEffect(() => {
         const getHasLiked = async () => {
@@ -128,7 +128,7 @@ export const Post = ({ postInfo, setPosts, isEditing }) => {
                     <div>
                         <div className="username-status-container">
                             <h2 className="username">{postUser.username}</h2>
-                            {followStatus && followStatus.status === "accepted" && <h3> • Friend</h3> }
+                            {followStatus && followStatus.status === "accepted" && <h3> • <span className="friend-h2">Friend</span></h3> }
                         </div>
                     
                         <h3 className="timestamp">{postInfo.updatedAt !== postInfo.createdAt ? `Updated at: ${[postInfo.updatedAt]}` : `Created at: ${postInfo.createdAt}`}</h3>

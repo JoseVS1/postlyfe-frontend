@@ -3,14 +3,14 @@ import UserContext from "../context/UserContext";
 import { Errors } from "./Errors";
 
 export const EditProfileForm = ({ setIsEditing }) => {
-    const { errors, setErrors, user } = useContext(UserContext);
+    const { errors, setErrors, user, setUser } = useContext(UserContext);
     const [formData, setFormData] = useState({
-        firstName: user.profile.firstName ? user.profile.firstName : "",
-        lastName: user.profile.lastName ? user.profile.lastName : "",
-        birthDate: user.profile.birthDate ? user.profile.birthDate : "",
-        gender: user.profile.gender ? user.profile.gender : "",
-        bio: user.profile.bio ? user.profile.bio : "",
-        profilePictureUrl: user.profile.profilePictureUrl ? user.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+        firstName: user.profile && user.profile.firstName ? user.profile.firstName : "",
+        lastName: user.profile?.lastName ? user.profile.lastName : "",
+        birthDate: user.profile?.birthDate ? user.profile.birthDate : "",
+        gender: user.profile?.gender ? user.profile.gender : "",
+        bio: user.profile?.bio ? user.profile.bio : "",
+        profilePictureUrl: user.profile?.profilePictureUrl ? user.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
     });
     const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
@@ -34,8 +34,10 @@ export const EditProfileForm = ({ setIsEditing }) => {
                 })
             });
             const data = await response.json();
+            console.log(data)
 
             if (response.ok) {
+                setUser(data.user);
                 setIsEditing(false);
             } else {
                 setErrors([data.message]);
@@ -62,7 +64,7 @@ export const EditProfileForm = ({ setIsEditing }) => {
 
         <form onSubmit={handleSubmit}>
             <label htmlFor="profilePictureUrl">Profile Picture URL: </label>
-            <img src={`${user.profile.profilePictureUrl ? user.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${user.username}'s profile picture`} />
+            <img src={`${user.profile?.profilePictureUrl ? user.profile.profilePictureUrl : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}`} alt={`${user.username}'s profile picture`} />
             <input type="text" onChange={handleInputChange} value={formData.profilePictureUrl} name="profilePictureUrl" id="profilePictureUrl" />
 
             <label htmlFor="gender">Gender: </label>

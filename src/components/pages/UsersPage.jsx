@@ -61,7 +61,8 @@ export const UsersPage = () => {
                     credentials: "include"
                 });
                 const data = await response.json();
-
+                
+                console.log(data)
                 if (response.ok) {
                     setAcceptedUsersIds(data.followersStatus.map(s => s.userId));
                 } else {
@@ -73,28 +74,31 @@ export const UsersPage = () => {
         };
 
         getAcceptedUsersIds();
-    }, [acceptedUsersIds]);
+    });
 
   return (
     <>
         {errors.length > 0 && <Errors errors={errors} />}
         
         {users && (
-            <ul>
-                {pendingUsers && (
-                    pendingUsers.map(u => (
-                        <li key={u.id}>
-                            <UserCard user={u} pending={true} />
-                        </li>
-                    ))
-                )}
+            <>
+                <h1>All users</h1>
+                <ul>
+                    {pendingUsers && (
+                        pendingUsers.map(u => (
+                            <li key={u.id}>
+                                <UserCard user={u} pending={true} />
+                            </li>
+                        ))
+                    )}
 
-                {users.map(user => (
-                    <li key={user.id}>
-                        <UserCard user={user} acceptedUsersIds={acceptedUsersIds} />
-                    </li>
-                ))}
-            </ul>
+                    {users.map(user => (
+                        <li key={user.id}>
+                            <UserCard user={user} acceptedUsersIds={acceptedUsersIds} />
+                        </li>
+                    ))}
+                </ul>
+            </>
         )}
     </>
   )

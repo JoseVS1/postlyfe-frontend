@@ -206,7 +206,7 @@ nav ul div {
 
 .create-post-form {
     background-color: white;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 1.5rem;
     border-radius: 0.75rem;
     display: flex;
@@ -252,7 +252,7 @@ nav ul div {
     background-color: white;
     padding: 2rem;
     border-radius: 0.75rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .user-link:hover .username {
@@ -391,7 +391,7 @@ button.delete-post-button:hover {
 
 .create-comment-form {
     background-color: white;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 1.5rem;
     border-radius: 0.75rem;
     display: flex;
@@ -457,7 +457,7 @@ button.delete-post-button:hover {
     padding: 2rem;
     border-radius: 0.5rem;
     min-width: 33.2rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .replies-section {
@@ -538,6 +538,14 @@ button.cancel-button:hover {
     font-size: 2rem;
     font-weight: bold;
     color: #1F2937;
+}
+
+.username-status-container h3 {
+    color: #111827;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .comment .timestamp {
@@ -642,6 +650,141 @@ button.reply-button:hover {
     gap: 1rem;
 }
 
+/* PROFILE PAGE */
+
+.profile-page {
+    min-height: 94.5vh;
+    padding: 5rem max(1rem, 25%);
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    background-color: white;
+    padding: 3rem 5rem;
+    min-height: 80vh;
+    border-radius: 0.75rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.user-card {
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    gap: 1rem;
+    align-items: center;
+}
+
+.user-card .username, .pending, .friend-h2 {
+    color: #1F2937;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.user-card .profile-picture {
+    height: 5rem;
+    border-radius: 50%;
+}
+
+.user-card button {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem;
+    color: #1F2937;
+    cursor: pointer;
+}
+
+.user-card .follow-button {
+    background-color: #10B981;
+    color: white;
+}
+
+.user-card .follow-button:hover, .user-card .accept-button:hover, .user-card .edit-profile-button:hover {
+    background-color: #60c3a0;
+    color: white;
+}
+
+.user-card .reject-button:hover, .user-card .unfollow-button:hover {
+    background-color: #EF4444;
+    color: white;
+}
+
+.user-card > a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pending {
+    color: #696b6d;
+}
+
+.friend-h2 {
+    color: #FBBF24;
+}
+
+.own-card {
+    justify-content: space-between;
+    padding: 0;
+}
+
+.own-card div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.8rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.bio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bio-container p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.user-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.user-posts > h2:first-of-type {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.empty-posts-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.empty-posts-container h2 {
+    color: #6b7280;
+    font-size: 2rem;
+    font-weight: normal;
+}
 
 /* PHONE */
 @media (max-width: 680px) {
@@ -673,6 +816,16 @@ button.reply-button:hover {
     .replies-section {
         margin: 0rem;
     }
+
+    /* PROFILE PAGE */
+
+    .profile-page {
+        padding: 5rem 2rem;
+    }
+
+    .profile {
+        padding: 3rem 3rem;
+    }
 }
 
 /* TABLET */
@@ -686,6 +839,12 @@ button.reply-button:hover {
     /* POST PAGE */
 
     .post-page {
+        padding: 5rem max(1rem, 15%);
+    }
+
+    /* PROFILE PAGE */
+
+    .profile-page {
         padding: 5rem max(1rem, 15%);
     }
 }

@@ -36,7 +36,7 @@ export const ProfilePage = () => {
         getProfileUser();
     }, [id, isEditing]);
   return (
-    <>
+    <div className="profile-page">
         {errors.length > 0 && <Errors errors={errors} />}
         
         {profileUser && !isLoggedUser || profileUser && !isEditing ? (
@@ -44,6 +44,6 @@ export const ProfilePage = () => {
         ) : (
             <EditProfileForm profileUser={profileUser} setIsEditing={setIsEditing} />
         )}
-    </>
+    </div>
   )
 }
