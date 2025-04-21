@@ -12,7 +12,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
-  
+
   useEffect(() => {
     if (user) {
       navigate("/");
@@ -56,7 +56,8 @@ export const LoginPage = () => {
         [e.target.name]: e.target.value
       }
     ));
-  }
+  };
+  
   return (
     <div className="login-page">
       <div className="login-card">

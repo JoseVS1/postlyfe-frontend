@@ -11,9 +11,8 @@ export const PostPage = () => {
     const { id } = useParams();
     const [post, setPost] = useState(null);
     const [comments, setComments] = useState(null);
-    const { errors, setErrors, posts, setPosts } = useContext(UserContext);
+    const { errors, setErrors, user, posts, setPosts } = useContext(UserContext);
     const [isEditing, setIsEditing] = useState(false);
-    const { user } = useContext(UserContext);
     const navigate = useNavigate();
     const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
@@ -84,6 +83,7 @@ export const PostPage = () => {
             setErrors(["Internal server error"]);
         }
     };
+
   return (
     <div className="post-page">
         {errors.length > 0 && <Errors errors={errors} />}

@@ -26,6 +26,7 @@ export const Profile = ({ profileUser, loggedUser, setIsEditing }) => {
 
     getUserPosts();
   }, [profileUser.id]);
+  
   return (
         <div className="profile">
             {loggedUser.id !== profileUser.id ? (
@@ -74,7 +75,6 @@ export const Profile = ({ profileUser, loggedUser, setIsEditing }) => {
                   </div>
                 )}
               </div>          
-            </div>  
-            
+            </div>
   )
 }

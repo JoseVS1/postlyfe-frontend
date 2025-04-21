@@ -11,7 +11,6 @@ export const UsersPage = () => {
     const { errors, setErrors } = useContext(UserContext);
     const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
-
     useEffect(() => {
         const getUsers = async () => {
             try {
@@ -77,29 +76,38 @@ export const UsersPage = () => {
     });
 
   return (
-    <>
+    <div className="users-page">
         {errors.length > 0 && <Errors errors={errors} />}
         
         {users && (
-            <>
-                <h1>All users</h1>
-                <ul>
-                    {pendingUsers && (
-                        pendingUsers.map(u => (
-                            <li key={u.id}>
-                                <UserCard user={u} pending={true} />
-                            </li>
-                        ))
-                    )}
+            <div>
+                {pendingUsers && pendingUsers.length > 0 && (
+                    <div>
+                        <h2>Pending requests</h2>
 
-                    {users.map(user => (
-                        <li key={user.id}>
-                            <UserCard user={user} acceptedUsersIds={acceptedUsersIds} />
-                        </li>
-                    ))}
-                </ul>
-            </>
+                        <ul className="user-list">
+                            {pendingUsers.map(u => (
+                                <li key={u.id}>
+                                    <UserCard user={u} pending={true} />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                <div>
+                    <h2>All users</h2>
+
+                    <ul className="user-list">
+                        {users.map(user => (
+                            <li key={user.id}>
+                                <UserCard user={user} acceptedUsersIds={acceptedUsersIds} />
+                            </li>
+                        ))}                        
+                    </ul>
+                </div>
+            </div>
         )}
-    </>
+    </div>
   )
 }

@@ -34,6 +34,7 @@ export const PostForm = ({ setPosts }) => {
             setErrors(["Internal server error."]);
         };
     };
+    
   return (
     <form className="create-post-form" onSubmit={handleSubmit}>
         <textarea onChange={e => setFormData({ content: e.target.value })} value={formData.content} name="content" id="content" required></textarea>

@@ -722,6 +722,12 @@ button.reply-button:hover {
     gap: 1rem;
 }
 
+.user-card .request-actions {
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
 .pending {
     color: #696b6d;
 }
@@ -846,6 +852,62 @@ button.reply-button:hover {
     gap: 1rem;
 }
 
+/* USERS PAGE */
+
+.users-page {
+    min-height: 94.5vh;
+    padding: 5rem max(1rem, 5%);
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.users-page > div > div > h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+.users-page > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+}
+
+.users-page > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5.4rem;
+}
+
+.user-list .user-card {
+    flex-direction: column;
+    padding: 3rem;
+    justify-content: center;
+    min-width: 30rem;
+    min-height: 30rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.user-list .user-card a:hover .username {
+    color: #696b6d;
+}
+
+.user-list .user-card .profile-picture {
+    height: 10rem;
+}
+
+.user-list .user-card a {
+    flex-direction: column;
+}
+
 /* PHONE */
 @media (max-width: 680px) {
     /* LOGIN PAGE */
@@ -895,6 +957,12 @@ button.reply-button:hover {
 
     .edit-profile-form {
         padding: 3rem 2rem;
+    }
+
+    /* USERS PAGE */
+
+    .user-list {
+        justify-content: center;
     }
 }
 

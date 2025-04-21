@@ -118,6 +118,7 @@ export const Post = ({ postInfo, setPosts, isEditing }) => {
             };
         };
     };
+    
   return (
     <div className="post">
         {postUser && !isEditing && (

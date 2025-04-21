@@ -12,9 +12,8 @@ export const SignupPage = () => {
   });
   const { user, setUser, errors, setErrors } = useContext(UserContext);
   const navigate = useNavigate();
-
   const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
-  
+
   useEffect(() => {
     if (user) {
       navigate("/");
@@ -60,7 +59,8 @@ export const SignupPage = () => {
         [e.target.name]: e.target.value
       }
     ));
-  }
+  };
+
   return (
     <div className="signup-page">
       <div className="signup-card">

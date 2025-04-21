@@ -9,6 +9,7 @@ import UserContext from "./context/UserContext"
 import { PostPage } from "./components/pages/PostPage"
 import { ProfilePage } from "./components/pages/ProfilePage"
 import { UsersPage } from "./components/pages/UsersPage"
+import { ErrorHandler } from "./components/ErrorHandler"
 
 export const App = () => {
   const [user, setUser] = useState(null);
@@ -42,6 +43,8 @@ export const App = () => {
 
   return (
     <UserContext.Provider value={{ user, setUser, posts, setPosts, errors, setErrors}}>
+      <ErrorHandler setErrors={setErrors} />
+
       <Navbar />
 
       <Routes>

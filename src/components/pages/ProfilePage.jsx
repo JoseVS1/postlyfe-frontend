@@ -35,6 +35,7 @@ export const ProfilePage = () => {
 
         getProfileUser();
     }, [id, isEditing]);
+
   return (
     <div className="profile-page">
         {errors.length > 0 && <Errors errors={errors} />}

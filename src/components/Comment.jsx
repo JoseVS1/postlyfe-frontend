@@ -151,6 +151,7 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
         setIsReplying(false);
         setReplyFormData({ text: "" });
     };
+    
   return (
     <>
         {commentUser && (

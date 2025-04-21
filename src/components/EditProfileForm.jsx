@@ -100,8 +100,7 @@ export const EditProfileForm = ({ setIsEditing }) => {
             <div className="edit-profile-actions">
                 <button className="cancel-button" onClick={handleCancelUpdate}>Cancel</button>
                 <button className="edit-profile-button" type="submit">Edit</button>
-            </div>
-            
+            </div>  
         </form>
     </div>
   )
