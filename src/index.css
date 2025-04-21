@@ -61,6 +61,21 @@ textarea {
     resize: none;
 }
 
+/* LOADING */
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 84.5vh;
+}
+
+.loading-container h2 {
+    font-size: 2rem;
+    color: #696b6d;
+    font-weight: bold;
+}
+
 /* ERRORS */
 
 .error {
