@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react"
 import { Post } from "./Post";
 import { UserCard } from "./UserCard";
 import UserContext from "../context/UserContext";
+import { parseISO, format } from "date-fns"
 
 export const Profile = ({ profileUser, loggedUser, setIsEditing }) => {
   const [posts, setPosts] = useState(null);
   const { setErrors } = useContext(UserContext);
+  const [formattedCreatedAt, setFormattedCreatedAt] = useState(format(parseISO(profileUser.createdAt), "MMMM do, yyyy"));
   const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
   useEffect(() => {
@@ -52,7 +54,7 @@ export const Profile = ({ profileUser, loggedUser, setIsEditing }) => {
                 <p>{profileUser.profile.bio ? profileUser.profile.bio : "None"}</p>
               </div>
             
-              <h2><span className="bold">Created at:</span> {profileUser.createdAt}</h2>
+              <h2><span className="bold">Created at:</span> {formattedCreatedAt}</h2>
               <h2><span className="bold">First name:</span> {profileUser.profile.firstName ? profileUser.profile.firstName : "Not provided"}</h2>
               <h2><span className="bold">Last name:</span> {profileUser.profile.lastName ? profileUser.profile.lastName : "Not provided"}</h2>
               <h2><span className="bold">Birthdate:</span> {profileUser.profile.birthDate ? profileUser.profile.birthDate : "Not provided"}</h2>

@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router";
 import UserContext from "../context/UserContext";
+import { parseISO, format } from "date-fns"
 
 export const Post = ({ postInfo, setPosts, isEditing }) => {
     const [postUser, setPostUser] = useState(null);
     const [liked, setLiked] = useState(false);
     const [followStatus, setFollowStatus] = useState(null);
     const { setErrors } = useContext(UserContext);
+    const [formattedCreatedAt, setFormattedCreatedAt] = useState(format(parseISO(postInfo.createdAt), "MMMM do, yyyy"));
+    const [formattedUpdatedAt, setFormattedUpdatedAt] = useState(format(parseISO(postInfo.updatedAt), "MMMM do, yyyy"));
     const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
     
     useEffect(() => {
@@ -132,7 +135,7 @@ export const Post = ({ postInfo, setPosts, isEditing }) => {
                             {followStatus && followStatus.status === "accepted" && <h3> • <span className="friend-h2">Friend</span></h3> }
                         </div>
                     
-                        <h3 className="timestamp">{postInfo.updatedAt !== postInfo.createdAt ? `Updated at: ${[postInfo.updatedAt]}` : `Created at: ${postInfo.createdAt}`}</h3>
+                        <h3 className="timestamp">{postInfo.updatedAt !== postInfo.createdAt ? `Updated at: ${[formattedUpdatedAt]}` : `Created at: ${formattedCreatedAt}`}</h3>
                     </div>
                 </Link>                        
                 

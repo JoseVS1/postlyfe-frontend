@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import UserContext from "../context/UserContext";
 import { Link } from "react-router";
 import { Comments } from "./Comments";
+import { parseISO, format } from "date-fns"
 
 export const Comment = ({ comment, postAuthorId, setComments, postId, setPost }) => {
     const [commentUser, setCommentUser] = useState(null);
@@ -15,6 +16,7 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
     const { setErrors, user } = useContext(UserContext);
     const [isReplying, setIsReplying] = useState(false);
     const [replies, setReplies] = useState(null);
+    const [formattedCreatedAt, setFormattedCreatedAt] = useState(format(parseISO(comment.createdAt), "MMMM do, yyyy"));
     const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
     useEffect(() => {
@@ -166,7 +168,7 @@ export const Comment = ({ comment, postAuthorId, setComments, postId, setPost })
                                 {commentUser.id === postAuthorId && <h3 className="author"> • Author</h3>}
                             </div>
 
-                            <h3 className="timestamp">{comment.createdAt}</h3>
+                            <h3 className="timestamp">{formattedCreatedAt}</h3>
                         </div>
                     </Link>
 
