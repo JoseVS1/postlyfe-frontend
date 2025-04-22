@@ -26,7 +26,7 @@ Postlyfe Frontend is a single-page application (SPA) built using React and Vite.
 -   **Build Tool:** Vite
 -   **Routing:** React Router
 -   **State Management:** React Context API
--   **Styling:** CSS (potentially with CSS Modules if refactored, currently global `index.css`)
+-   **Styling:** CSS
 -   **HTTP Client:** Fetch API
 -   **Linting:** ESLint
 -   **Icons:** Font Awesome
