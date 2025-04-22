@@ -143,7 +143,7 @@ Postlyfe Frontend is a single-page application (SPA) built using React and Vite.
 
 ## License
 
-[MIT License](LICENSE)
+MIT License
 
 ## Acknowledgements
 
